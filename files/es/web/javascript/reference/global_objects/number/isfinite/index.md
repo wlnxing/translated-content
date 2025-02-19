@@ -1,14 +1,24 @@
 ---
 title: Number.isFinite()
 slug: Web/JavaScript/Reference/Global_Objects/Number/isFinite
-original_slug: Web/JavaScript/Referencia/Objetos_globales/Number/isFinite
 ---
 
 {{JSRef}}
 
 El método **`Number.isFinite()`** determina si el valor pasado es un número finito.
 
-{{EmbedInteractiveExample("pages/js/number-isfinite.html")}}
+{{InteractiveExample("JavaScript Demo: Number.isFinite()")}}
+
+```js interactive-example
+console.log(Number.isFinite(1 / 0));
+// Expected output: false
+
+console.log(Number.isFinite(10 / 5));
+// Expected output: true
+
+console.log(Number.isFinite(0 / 0));
+// Expected output: false
+```
 
 ## Sintaxis
 
@@ -32,25 +42,27 @@ En comparación con la funcion global {{jsxref("isFinite", "isFinite()")}} , est
 ## Ejemplos
 
 ```js
-Number.isFinite(Infinity);  // false
-Number.isFinite(NaN);       // false
+Number.isFinite(Infinity); // false
+Number.isFinite(NaN); // false
 Number.isFinite(-Infinity); // false
 
-Number.isFinite(0);         // true
-Number.isFinite(2e64);      // true
+Number.isFinite(0); // true
+Number.isFinite(2e64); // true
 
-Number.isFinite('0');       // false, retornaría true con la función
-                            // global isFinite('0')
-Number.isFinite(null);      // false, retornaría true con la función
-                            // global isFinite(null)
+Number.isFinite("0"); // false, retornaría true con la función
+// global isFinite('0')
+Number.isFinite(null); // false, retornaría true con la función
+// global isFinite(null)
 ```
 
 ## Polyfill
 
 ```js
-Number.isFinite = Number.isFinite || function(value) {
-    return typeof value === 'number' && isFinite(value);
-}
+Number.isFinite =
+  Number.isFinite ||
+  function (value) {
+    return typeof value === "number" && isFinite(value);
+  };
 ```
 
 ## Especificaciones

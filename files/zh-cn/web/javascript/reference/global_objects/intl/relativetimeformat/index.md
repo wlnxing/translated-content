@@ -7,7 +7,22 @@ slug: Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat
 
 **`Intl.RelativeTimeFormat`** 对象用于语言敏感的相对时间的格式化。
 
-{{EmbedInteractiveExample("pages/js/intl-relativetimeformat.html")}}
+{{InteractiveExample("JavaScript Demo: Intl.RelativeTimeFormat")}}
+
+```js interactive-example
+const rtf1 = new Intl.RelativeTimeFormat("en", { style: "short" });
+
+console.log(rtf1.format(3, "quarter"));
+// Expected output: "in 3 qtrs."
+
+console.log(rtf1.format(-1, "day"));
+// Expected output: "1 day ago"
+
+const rtf2 = new Intl.RelativeTimeFormat("es", { numeric: "auto" });
+
+console.log(rtf2.format(2, "day"));
+// Expected output: "pasado mañana"
+```
 
 ## 构造函数
 
@@ -38,9 +53,9 @@ slug: Web/JavaScript/Reference/Global_Objects/Intl/RelativeTimeFormat
 // 在你的区域下创建相对时间格式化程序
 // 显式传入默认值。
 const rtf = new Intl.RelativeTimeFormat("en", {
-  localeMatcher: "bestfit",// 其他值："lookup"
-  numeric: "always",// 其他值："auto"
-  style: "long",// 其他值："short"或"narrow"
+  localeMatcher: "bestfit", // 其他值："lookup"
+  numeric: "always", // 其他值："auto"
+  style: "long", // 其他值："short"或"narrow"
 });
 
 // 使用负值（-1）格式化相对时间。
@@ -55,13 +70,13 @@ rtf.format(1, "day"); // "in 1 day"
 以下示例展示了如何创建一个用于返回格式化后的每一个部分的相对时间格式化程序。
 
 ```js
-const rtf = new Intl.RelativeTimeFormat("en",{numeric: "auto"});
+const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
 
 // 使用日期单位格式化相对时间。
-rtf.formatToParts(-1,"day");
+rtf.formatToParts(-1, "day");
 // [{type: "literal", value: "yesterday"}]
 
-rtf.formatToParts(100,"day");
+rtf.formatToParts(100, "day");
 // [
 //   { type: "literal", value: "in " },
 //   { type: "integer", value: "100", unit: "day" },

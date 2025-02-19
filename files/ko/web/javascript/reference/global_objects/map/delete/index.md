@@ -1,13 +1,27 @@
 ---
 title: Map.prototype.delete()
 slug: Web/JavaScript/Reference/Global_Objects/Map/delete
+l10n:
+  sourceCommit: 88d71e500938fa8ca969fe4fe3c80a5abe23d767
 ---
 
 {{JSRef}}
 
-**`delete()`** 메서드는 키로 `Map` 객체에서 특정 요소를 제거합니다.
+{{jsxref("Map")}} 인스턴스의 **`delete()`** 메서드는 이 Map 에서 특정 요소를 제거합니다.
 
-{{EmbedInteractiveExample("pages/js/map-prototype-delete.html")}}
+{{InteractiveExample("JavaScript Demo: Map.prototype.delete()")}}
+
+```js interactive-example
+const map1 = new Map();
+map1.set("bar", "foo");
+
+console.log(map1.delete("bar"));
+// Expected result: true
+// True indicates successful removal
+
+console.log(map1.has("bar"));
+// Expected result: false
+```
 
 ## 구문
 
@@ -15,7 +29,7 @@ slug: Web/JavaScript/Reference/Global_Objects/Map/delete
 delete(key)
 ```
 
-### 매개 변수
+### 매개변수
 
 - `key`
   - : `Map` 객체에서 제거할 요소의 키
@@ -30,10 +44,10 @@ delete(key)
 
 ```js
 const myMap = new Map();
-myMap.set('bar', 'foo');
+myMap.set("bar", "foo");
 
-console.log(myMap.delete('bar')); // Returns true. Successfully removed.
-console.log(myMap.has('bar')); // Returns false. The "bar" element is no longer present.
+console.log(myMap.delete("bar")); // true를 반환합니다. 성공적으로 제거되었습니다.
+console.log(myMap.has("bar")); // false를 반환합니다. "bar" 요소는 더 이상 존재하지 않습니다.
 ```
 
 ## 명세서

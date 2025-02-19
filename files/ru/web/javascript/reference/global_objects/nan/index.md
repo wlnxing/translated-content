@@ -1,11 +1,6 @@
 ---
 title: NaN
 slug: Web/JavaScript/Reference/Global_Objects/NaN
-tags:
-  - JavaScript
-  - Property
-  - Reference
-translation_of: Web/JavaScript/Reference/Global_Objects/NaN
 ---
 
 {{jsSidebar("Objects")}}
@@ -16,7 +11,22 @@ translation_of: Web/JavaScript/Reference/Global_Objects/NaN
 
 {{js_property_attributes(0, 0, 0)}}
 
-{{EmbedInteractiveExample("pages/js/globalprops-nan.html")}}
+{{InteractiveExample("JavaScript Demo: Standard built-in objects - NaN")}}
+
+```js interactive-example
+function sanitize(x) {
+  if (isNaN(x)) {
+    return NaN;
+  }
+  return x;
+}
+
+console.log(sanitize("1"));
+// Expected output: "1"
+
+console.log(sanitize("NotANumber"));
+// Expected output: NaN
+```
 
 ## Описание
 
@@ -31,22 +41,24 @@ translation_of: Web/JavaScript/Reference/Global_Objects/NaN
 `NaN` является неравным (посредством сравнения через `==`, `!=`, `===`, and `!==`) любому другому значению, включая другое значение NaN. Используйте {{jsxref("Number.isNaN()")}} или {{jsxref("Global_Objects/isNaN", "isNaN()")}}, чтобы наиболее понятным образом определить является ли значение значением NaN. Или выполните само-сравнение: NaN, и только NaN, в результате такого сравнения будет неравным самому себе.
 
 ```js
-NaN === NaN;        // false
+NaN === NaN; // false
 Number.NaN === NaN; // false
-isNaN(NaN);         // true
-isNaN(Number.NaN);  // true
+isNaN(NaN); // true
+isNaN(Number.NaN); // true
 
-function valueIsNaN(v) { return v !== v; }
-valueIsNaN(1);          // false
-valueIsNaN(NaN);        // true
+function valueIsNaN(v) {
+  return v !== v;
+}
+valueIsNaN(1); // false
+valueIsNaN(NaN); // true
 valueIsNaN(Number.NaN); // true
 ```
 
 Тем не менее, обратите внимание на разницу между функцией `isNaN()` и методом `Number.isNaN()`: первая вернёт `true`, если значение в настоящий момент является `NaN`, или если оно станет `NaN` после того, как преобразуется в число, в то время как последний вернёт `true`, только если текущим значением является `NaN`:
 
 ```js
-isNaN('hello world');        // true
-Number.isNaN('hello world'); // false
+isNaN("hello world"); // true
+Number.isNaN("hello world"); // false
 ```
 
 ## Спецификации

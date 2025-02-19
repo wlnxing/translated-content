@@ -8,7 +8,21 @@ slug: Web/JavaScript/Reference/Global_Objects/undefined
 전역 **`undefined`** 속성은 `{{Glossary("Undefined", "undefined")}}` 원시 값을 나타내며,
 JavaScript의 {{Glossary("Primitive", "원시 자료형")}} 중 하나입니다.
 
-{{EmbedInteractiveExample("pages/js/globalprops-undefined.html")}}
+{{InteractiveExample("JavaScript Demo: Standard built-in objects - undefined")}}
+
+```js interactive-example
+function test(t) {
+  if (t === undefined) {
+    return "Undefined value!";
+  }
+  return t;
+}
+
+let x;
+
+console.log(test(x));
+// Expected output: "Undefined value!"
+```
 
 ## 값
 
@@ -24,7 +38,8 @@ JavaScript의 {{Glossary("Primitive", "원시 자료형")}} 중 하나입니다.
 
 값을 할당하지 않은 변수는 `undefined` 자료형입니다. 메서드나 선언도 평가할 변수가 값을 할당받지 않은 경우에 `undefined`를 반환합니다. 함수는 값을 명시적으로 {{jsxref("Statements/return", "반환")}}하지 않으면 `undefined`를 반환합니다.
 
-> **참고:** 전역 범위 이외의 모든 범위에서 {{Glossary("Identifier", "식별자")}} (변수 이름)로 `undefined`를 사용할 수 있지만(`undefined`는 [예약어](/ko/docs/Web/JavaScript/Reference/Lexical_grammar#reserved_words)가 아니기 때문에), 그렇게 하는 것은 매우 나쁜 생각입니다. 코드를 유지보수하고 디버깅하기 어렵게 만듭니다.
+> [!NOTE]
+> 전역 범위 이외의 모든 범위에서 {{Glossary("Identifier", "식별자")}} (변수 이름)로 `undefined`를 사용할 수 있지만(`undefined`는 [예약어](/ko/docs/Web/JavaScript/Reference/Lexical_grammar#reserved_words)가 아니기 때문에), 그렇게 하는 것은 매우 나쁜 생각입니다. 코드를 유지보수하고 디버깅하기 어렵게 만듭니다.
 >
 > ```js example-bad
 > // DON'T DO THIS
@@ -48,10 +63,9 @@ JavaScript의 {{Glossary("Primitive", "원시 자료형")}} 중 하나입니다.
 ```js
 let x;
 if (x === undefined) {
-   // 이 문이 실행됨
-}
-else {
-   // 이 문이 실행되지 않음
+  // 이 문이 실행됨
+} else {
+  // 이 문이 실행되지 않음
 }
 ```
 
@@ -66,8 +80,8 @@ else {
 
 ```js
 let x;
-if (typeof x === 'undefined') {
-   // 이 문이 실행됨
+if (typeof x === "undefined") {
+  // 이 문이 실행됨
 }
 ```
 
@@ -76,13 +90,12 @@ if (typeof x === 'undefined') {
 ```js
 // x를 선언한 적 없음
 // 오류 없이 true로 평가
-if (typeof x === 'undefined') {
-   // 이 문이 실행됨
+if (typeof x === "undefined") {
+  // 이 문이 실행됨
 }
 
 // ReferenceError 발생
-if(x === undefined) {
-
+if (x === undefined) {
 }
 ```
 

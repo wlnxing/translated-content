@@ -1,23 +1,27 @@
 ---
 title: Array.prototype.at()
 slug: Web/JavaScript/Reference/Global_Objects/Array/at
-tags:
-  - Array
-  - JavaScript
-  - Method
-  - Prototype
-  - Reference
-  - polyfill
-  - at
-  - Polyfill
-browser-compat: javascript.builtins.Array.at
 ---
 
 {{JSRef}}
 
 Метод **`at()`** принимает значение в виде целого числа и возвращает элемент массива с данным индексом. В качестве аргумента метод принимает положительные и отрицательные числа. При отрицательном значении отсчёт происходит с конца массива.
 
-{{EmbedInteractiveExample("pages/js/array-at.html")}}
+{{InteractiveExample("JavaScript Demo: Array.at()")}}
+
+```js interactive-example
+const array1 = [5, 12, 8, 130, 44];
+
+let index = 2;
+
+console.log(`An index of ${index} returns ${array1.at(index)}`);
+// Expected output: "An index of 2 returns 8"
+
+index = -2;
+
+console.log(`An index of ${index} returns ${array1.at(index)}`);
+// Expected output: "An index of -2 returns 130"
+```
 
 ## Синтаксис
 
@@ -40,7 +44,7 @@ at(index)
 
 Обычной практикой является получении числа элементов массива {{jsxref("Array/length", "length")}} и последующее вычисление значения индекса — например, `array[array.length - 1]`. Метод `at()` разрешает относительную индексацию, поэтому может быть сокращено до `array.at(-1)`.
 
-Метод `at()` — это [generic](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#generic_array_methods). Он ожидает только, что значение `this` будет иметь свойство `length` и свойства с числовыми ключом.
+Метод `at()` — это [generic](/ru/docs/Web/JavaScript/Reference/Global_Objects/Array#generic_array_methods). Он ожидает только, что значение `this` будет иметь свойство `length` и свойства с числовыми ключом.
 
 ## Примеры
 
@@ -50,7 +54,7 @@ at(index)
 
 ```js
 // Массив со значениями
-const cart = ['apple', 'banana', 'pear'];
+const cart = ["apple", "banana", "pear"];
 
 // Функция, которая возвращает последний элемент переданного массива
 function returnLast(arr) {
@@ -62,7 +66,7 @@ const item1 = returnLast(cart);
 console.log(item1); // Выведет: 'pear'
 
 // Добавить элемент в наш массив 'cart'
-cart.push('orange');
+cart.push("orange");
 const item2 = returnLast(cart);
 console.log(item2); // Выведет: 'orange'
 ```
@@ -73,10 +77,10 @@ console.log(item2); // Выведет: 'orange'
 
 ```js
 // Наш массив с элементами
-const colors = ['red', 'green', 'blue'];
+const colors = ["red", "green", "blue"];
 
 // Использование свойства 'length'
-const lengthWay = colors[colors.length-2];
+const lengthWay = colors[colors.length - 2];
 console.log(lengthWay); // Выведет: 'green'
 
 // Использование метода slice(). Обратите внимание, что возвращается массив
@@ -105,7 +109,7 @@ console.log(Array.prototype.at.call(arrayLike, -1)); // "b"
 
 {{Specifications}}
 
-## Поддержка браузерами
+## Совместимость с браузерами
 
 {{Compat}}
 

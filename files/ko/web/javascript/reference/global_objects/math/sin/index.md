@@ -7,12 +7,27 @@ slug: Web/JavaScript/Reference/Global_Objects/Math/sin
 
 **`Math.sin()`** 함수는 숫자의 사인값을 반환합니다.
 
-{{EmbedInteractiveExample("pages/js/math-sin.html")}}
+{{InteractiveExample("JavaScript Demo: Math.sin()")}}
+
+```js interactive-example
+function getCircleY(radians, radius) {
+  return Math.sin(radians) * radius;
+}
+
+console.log(getCircleY(1, 10));
+// Expected output: 8.414709848078965
+
+console.log(getCircleY(2, 10));
+// Expected output: 9.092974268256818
+
+console.log(getCircleY(Math.PI, 10));
+// Expected output: 1.2246467991473533e-15
+```
 
 ## Syntax
 
 ```js
-    Math.sin(x)
+Math.sin(x);
 ```
 
 ### 파라미터
@@ -35,8 +50,8 @@ slug: Web/JavaScript/Reference/Global_Objects/Math/sin
 ### Using `Math.sin()`
 
 ```js
-Math.sin(0);           // 0
-Math.sin(1);           // 0.8414709848078965
+Math.sin(0); // 0
+Math.sin(1); // 0.8414709848078965
 
 Math.sin(Math.PI / 2); // 1
 ```

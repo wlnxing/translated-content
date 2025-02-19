@@ -1,20 +1,29 @@
 ---
 title: Intl.Segments.prototype.containing()
-slug: >-
-  Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/segment/Segments/containing
-original_slug: Web/JavaScript/Reference/Global_Objects/Intl/Segments/containing
+slug: Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/segment/Segments/containing
 ---
 
 {{JSRef}}
 
 **`Intl.Segments.containing()`** メソッドは、指定されたインデックスのコードユニットを含む文字列中のセグメントを記述したオブジェクトを返します。
 
-{{EmbedInteractiveExample("pages/js/intl-segments-prototype-containing.html")}}
+{{InteractiveExample("JavaScript Demo: Segments.prototype.containing")}}
+
+```js interactive-example
+const segmenterFr = new Intl.Segmenter("fr", { granularity: "word" });
+const string1 = "Que ma joie demeure";
+
+const segments = segmenterFr.segment(string1);
+
+console.log(segments.containing(5));
+// Expected output:
+// Object {segment: 'ma', index: 4, input: 'Que ma joie demeure', isWordLike: true}
+```
 
 ## 構文
 
 ```js
-containing(codeUnitIndex)
+containing(codeUnitIndex);
 ```
 
 ### 引数
@@ -42,7 +51,7 @@ containing(codeUnitIndex)
 // ┃A l l o n s┃-┃y┃!┃   ← code unit
 const input = "Allons-y!";
 
-const segmenter = new Intl.Segmenter("fr", {granularity: "word"});
+const segmenter = new Intl.Segmenter("fr", { granularity: "word" });
 const segments = segmenter.segment(input);
 let current = undefined;
 

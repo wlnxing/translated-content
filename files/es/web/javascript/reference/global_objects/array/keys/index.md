@@ -1,7 +1,7 @@
 ---
 title: Array.prototype.keys()
 slug: Web/JavaScript/Reference/Global_Objects/Array/keys
-ln10:
+l10n:
   sourceCommit: 194d3e00cb93a6e5ea44812548f4131cb17f0381
 ---
 
@@ -9,7 +9,20 @@ ln10:
 
 El método **`keys()`** devuelve un nuevo objeto **Array Iterator** que contiene las claves para cada indice en el arreglo.
 
-{{EmbedInteractiveExample("pages/js/array-keys.html")}}
+{{InteractiveExample("JavaScript Demo: Array.keys()")}}
+
+```js interactive-example
+const array1 = ["a", "b", "c"];
+const iterator = array1.keys();
+
+for (const key of iterator) {
+  console.log(key);
+}
+
+// Expected output: 0
+// Expected output: 1
+// Expected output: 2
+```
 
 ## Sintaxis
 

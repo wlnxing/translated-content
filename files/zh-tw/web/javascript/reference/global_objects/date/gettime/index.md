@@ -9,7 +9,15 @@ slug: Web/JavaScript/Reference/Global_Objects/Date/getTime
 
 你可以透過此方法指派一日期與時間至另一 {{jsxref("Date")}} 物件。這個方法在功能上與 {{jsxref("Date/valueof", "valueOf()")}} 相同。
 
-{{EmbedInteractiveExample("pages/js/date-gettime.html","shorter")}}
+{{InteractiveExample("JavaScript Demo: Date.getTime()", "shorter")}}
+
+```js interactive-example
+const moonLanding = new Date("July 20, 69 20:17:40 GMT+00:00");
+
+// Milliseconds since Jan 1, 1970, 00:00:00.000 GMT
+console.log(moonLanding.getTime());
+// Expected output: -14182940000
+```
 
 ## 語法
 
@@ -23,10 +31,10 @@ getTime()
 
 ## 描述
 
-`new Date().getTime()` 的精確度可能會依瀏覽器設定而做取捨，以防止時序攻擊（timing attack）與指紋辨識（fingerprinting）。如 Firefox 預設會開啟 `privacy.reduceTimerPrecision`，在 Firefox 59 預設為 20µs、Firefox 60 為 2ms 。
+`new Date().getTime()` 的精確度可能會依瀏覽器設定而做取捨，以防止時序攻擊（timing attack）與指紋辨識（fingerprinting）。如 Firefox 預設會開啟 `privacy.reduceTimerPrecision`，在 Firefox 59 預設為 20µs、Firefox 60 為 2ms。
 
 ```js
-// 在 Firefox 60 中降低的時間精確度 (2ms) 
+// 在 Firefox 60 中降低的時間精確度（2ms）
 new Date().getTime();
 // 1519211809934
 // 1519211810362

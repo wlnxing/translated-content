@@ -1,21 +1,41 @@
 ---
 title: handler.ownKeys()
 slug: Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/ownKeys
-original_slug: Web/JavaScript/Reference/Global_Objects/Proxy/handler/ownKeys
 ---
 
 {{JSRef}}
 
 **`handler.ownKeys()`** 方法用于拦截 {{jsxref("Reflect.ownKeys()")}}.
 
-{{EmbedInteractiveExample("pages/js/proxyhandler-ownkeys.html", "taller")}}
+{{InteractiveExample("JavaScript Demo: handler.ownKeys()", "taller")}}
+
+```js interactive-example
+const monster1 = {
+  _age: 111,
+  [Symbol("secret")]: "I am scared!",
+  eyeCount: 4,
+};
+
+const handler1 = {
+  ownKeys(target) {
+    return Reflect.ownKeys(target);
+  },
+};
+
+const proxy1 = new Proxy(monster1, handler1);
+
+for (const key of Object.keys(proxy1)) {
+  console.log(key);
+  // Expected output: "_age"
+  // Expected output: "eyeCount"
+}
+```
 
 ## 语法
 
 ```js
 var p = new Proxy(target, {
-  ownKeys: function(target) {
-  }
+  ownKeys: function (target) {},
 });
 ```
 
@@ -57,31 +77,33 @@ var p = new Proxy(target, {
 下面的代码拦截 {{jsxref("Object.getOwnPropertyNames()")}}.
 
 ```js
-var p = new Proxy({}, {
-  ownKeys: function(target) {
-    console.log('called');
-    return ['a', 'b', 'c'];
-  }
-});
+var p = new Proxy(
+  {},
+  {
+    ownKeys: function (target) {
+      console.log("called");
+      return ["a", "b", "c"];
+    },
+  },
+);
 
-console.log(Object.getOwnPropertyNames(p)); // "called"
-                                            // [ 'a', 'b', 'c' ]
+console.log(Object.getOwnPropertyNames(p)); // "called"; outputs [ 'a', 'b', 'c' ]
 ```
 
 下面的代码违反了约定
 
 ```js example-bad
 var obj = {};
-Object.defineProperty(obj, 'a', {
+Object.defineProperty(obj, "a", {
   configurable: false,
   enumerable: true,
-  value: 10 }
-);
+  value: 10,
+});
 
 var p = new Proxy(obj, {
-  ownKeys: function(target) {
+  ownKeys: function (target) {
     return [123, 12.5, true, false, undefined, null, {}, []];
-  }
+  },
 });
 
 console.log(Object.getOwnPropertyNames(p));
@@ -98,7 +120,7 @@ console.log(Object.getOwnPropertyNames(p));
 
 {{Compat}}
 
-## 另见
+## 参见
 
 - {{jsxref("Proxy")}}
 - {{jsxref("Proxy.handler", "handler")}}

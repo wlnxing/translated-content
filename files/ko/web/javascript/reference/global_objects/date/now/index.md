@@ -2,16 +2,32 @@
 title: Date.now()
 slug: Web/JavaScript/Reference/Global_Objects/Date/now
 ---
+
 {{JSRef}}
 
 **`Date.now()`** 메소드는 UTC 기준으로 1970년 1월 1일 0시 0분 0초부터 현재까지 경과된 밀리초를 반환합니다.
 
-{{EmbedInteractiveExample("pages/js/date-now.html")}}
+{{InteractiveExample("JavaScript Demo: Date.now()")}}
+
+```js interactive-example
+// This example takes 2 seconds to run
+const start = Date.now();
+
+console.log("starting timer...");
+// Expected output: "starting timer..."
+
+setTimeout(() => {
+  const millis = Date.now() - start;
+
+  console.log(`seconds elapsed = ${Math.floor(millis / 1000)}`);
+  // Expected output: "seconds elapsed = 2"
+}, 2000);
+```
 
 ## 문법
 
 ```js
-    var timeInMs = Date.now();
+var timeInMs = Date.now();
 ```
 
 ### 반환 값
@@ -50,7 +66,6 @@ Date.now();
 // 1519211810362
 // 1519211811670
 // ...
-
 
 // `privacy.resistFingerprinting`을 활성화하여 시간 정밀도 감소
 Date.now();

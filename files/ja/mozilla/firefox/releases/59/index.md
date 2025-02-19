@@ -16,20 +16,20 @@ Firefox 59 は、米国時間 2018 年 3 月 13 日にリリースされまし�
 - [ネットワークモニター](https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/index.html) の応答タブで、応答が HTML である場合に [描画された HTML のプレビュー](https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/index.html#html-preview) を表示するようになりました ([Firefox バグ 1353319](https://bugzil.la/1353319))。
 - ストレージインスペクターで表示する Cookie の情報 ([Cookie](https://firefox-source-docs.mozilla.org/devtools-user/storage_inspector/index.html#cookies) をご覧ください) で、それぞれの Cookie が same-site 状態であるかを示す _sameSite_ 列を追加しました ([Firefox バグ 1298370](https://bugzil.la/1298370))。
 - [定規](https://firefox-source-docs.mozilla.org/devtools-user/rulers/index.html) ツールで、ビューポートの現在の寸法を示す情報を表示するようになりました ([Firefox バグ 1402633](https://bugzil.la/1402633))。
-- [レスポンシブデザインモード](https://firefox-source-docs.mozilla.org/devtools-user/responsive_design_mode/index.html) で、カーソルキーを使用して画面の寸法を設定できるようにになりました ([Firefox バグ 1421663](https://bugzil.la/1421663))。詳しくは [画面のサイズを設定する](https://firefox-source-docs.mozilla.org/devtools-user/responsive_design_mode/index.html#setting-screen-size) をご覧ください。
+- [レスポンシブデザインモード](https://firefox-source-docs.mozilla.org/devtools-user/responsive_design_mode/index.html) で、カーソルキーを使用して画面の寸法を設定できるようになりました ([Firefox バグ 1421663](https://bugzil.la/1421663))。詳しくは [画面のサイズを設定する](https://firefox-source-docs.mozilla.org/devtools-user/responsive_design_mode/index.html#setting-screen-size) をご覧ください。
 - [ネットワークモニター](https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/index.html) の _ヘッダー_ タブに表示する*生ヘッダー*で、応答のステータスコードを表示するようになりました ([Firefox バグ 1419401](https://bugzil.la/1419401))。
 
 ### HTML
 
-- {{HTMLElement("textarea")}} 要素の {{htmlattrxref("autocomplete", "textarea")}} 属性を実装しました。要素でフォームのオートフィル機能を有効化または無効化できます。
+- {{HTMLElement("textarea")}} 要素の [`autocomplete`](/ja/docs/Web/HTML/Element/textarea#autocomplete) 属性を実装しました。要素でフォームのオートフィル機能を有効化または無効化できます。
 
 ### CSS
 
 - {{cssxref("overscroll-behavior")}} プロパティと、このプロパティに関係するロングハンドプロパティである {{cssxref("overscroll-behavior-x")}} および {{cssxref("overscroll-behavior-y")}} を実装しました ([Firefox バグ 951793](https://bugzil.la/951793))。また、すべてのリリースで、デフォルトで有効化しました ([Firefox バグ 1428879](https://bugzil.la/1428879))。
 - "unusual elements" (置換要素のように、CSS のボックスの概念に従って描画されない要素) で {{cssxref("display")}} の値に `contents` を指定したときの動作を、仕様書に従って更新しました ([Firefox バグ 1427292](https://bugzil.la/1427292))。仕様で定められた正確な動作については、[Appendix B: Effects of display: contents on Unusual Elements](https://drafts.csswg.org/css-display/#unbox) をご覧ください。
-- {{cssxref("position")}} の `sticky` を、適切な [HTML テーブル](/ja/docs/Learn/HTML/Tables) の部品 (例えば {{htmlelement("th")}} 要素) でサポートしました ([Firefox バグ 975644](https://bugzil.la/975644))。
+- {{cssxref("position")}} の `sticky` を、適切な [HTML テーブル](/ja/docs/Learn_web_development/Core/Structuring_content/HTML_table_basics) の部品 (例えば {{htmlelement("th")}} 要素) でサポートしました ([Firefox バグ 975644](https://bugzil.la/975644))。
 - {{cssxref("&lt;color&gt;")}} 値 (`rgb()`, `rgba()`, `hsl()`, `hsla()`) で {{cssxref("calc", "calc()")}} をサポートしました ([Firefox バグ 984021](https://bugzil.la/984021))。
-- [メディアクエリー](/ja/docs/Web/CSS/Media_Queries) の値で {{cssxref("calc", "calc()")}} をサポートしました ([Firefox バグ 1396057](https://bugzil.la/1396057))。
+- [メディアクエリー](/ja/docs/Web/CSS/CSS_media_queries) の値で {{cssxref("calc", "calc()")}} をサポートしました ([Firefox バグ 1396057](https://bugzil.la/1396057))。
 - {{cssxref("@document")}} @-規則の使用を、ユーザースタイルシートと UA スタイルシートに限定しました ([Firefox バグ 1035091](https://bugzil.la/1035091))。
 - {{cssxref("font-optical-sizing")}} プロパティを実装しました ([Firefox バグ 1435692](https://bugzil.la/1435692))。
 
@@ -67,7 +67,8 @@ _変更なし。_
 
 - {{domxref("MediaStreamTrack")}} の {{domxref("MediaStreamTrack.muted")}} プロパティ、および {{domxref("MediaStreamTrack.mute_event", "mute")}} イベントと {{domxref("MediaStreamTrack.unmute_event", "unmute")}} イベント、さらにこれに対応するイベントハンドラーである {{domxref("MediaStreamTrack.mute_event", "onmute")}} と {{domxref("MediaStreamTrack.unmute_event", "onunmute")}} を実装しました。トラックの `muted` 状態は、トラックが今のところメディアデータを提供できないことを示します。
 
-  > **メモ:** トラックの `muted` 状態は、一般的に考えられているトラックのミュートやミュート解除として役に立つものではありません。代わりに {{domxref("MediaStreamTrack.enabled", "enabled")}} プロパティを使用します。`enabled` を `false` に設定すると、トラックは空のフレームだけを出力します。
+  > [!NOTE]
+  > トラックの `muted` 状態は、一般的に考えられているトラックのミュートやミュート解除として役に立つものではありません。代わりに {{domxref("MediaStreamTrack.enabled", "enabled")}} プロパティを使用します。`enabled` を `false` に設定すると、トラックは空のフレームだけを出力します。
 
 - Android 版 Firefox 59 で Apple の HTTPS Live Streaming (HLS) を、音声および映像の両方でサポートしました。この非標準プロトコルは、モバイル環境においてモバイルストリーミングのためにこのプロトコルを必要とするサイトの互換性を向上するためにサポートしました。現在、デスクトップ版 Firefox にこのプロトコルを実装する予定はありません。
 - それぞれの RTP ストリームのソースの情報を提供するため、{{domxref("RTCRtpReceiver")}} の {{domxref("RTCRtpReceiver.getContributingSources", "getContributingSources()")}} および {{domxref("RTCRtpReceiver.getSynchronizationSources", "getSynchronizationSources()")}} メソッドを実装しました。ただし、公開前に仕様書が変更されましたので、デフォルトで設定項目 `media.peerconnection.rtpsourcesapi.enable` によってこれらを無効化しました ([Firefox バグ 1363667](https://bugzil.la/1363667), [Firefox バグ 1430213](https://bugzil.la/1430213), [Firefox バグ 1433236](https://bugzil.la/1433236))。
@@ -108,7 +109,7 @@ _変更なし。_
 
 ### HTML
 
-- {{htmlelement("script")}} 要素の {{htmlattrxref("type","script")}} 属性の非標準パラメーターである `version` (例えば `type="application/javascript;version=1.8"`) を削除しました ([Firefox バグ 1428745](https://bugzil.la/1428745))。
+- {{htmlelement("script")}} 要素の [`type`](/ja/docs/Web/HTML/Element/script#type) 属性の非標準引数である `version` (例えば `type="application/javascript;version=1.8"`) を削除しました ([Firefox バグ 1428745](https://bugzil.la/1428745))。
 
 ### CSS
 

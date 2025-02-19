@@ -7,12 +7,27 @@ slug: Web/JavaScript/Reference/Global_Objects/WeakMap/set
 
 **`set()`** 메서드는 지정된 키와 값을 가진 새 요소를 `WeakMap` 객체에 추가합니다.
 
-{{EmbedInteractiveExample("pages/js/weakmap-prototype-set.html")}}
+{{InteractiveExample("JavaScript Demo: WeakMap.prototype.set()")}}
+
+```js interactive-example
+const weakmap1 = new WeakMap();
+const object1 = {};
+const object2 = {};
+
+weakmap1.set(object1, "foo");
+weakmap1.set(object2, "bar");
+
+console.log(weakmap1.get(object1));
+// Expected output: "foo"
+
+console.log(weakmap1.get(object2));
+// Expected output: "bar"
+```
 
 ## 구문
 
 ```js
-set(key, value)
+set(key, value);
 ```
 
 ### 매개변수
@@ -35,10 +50,10 @@ const wm = new WeakMap();
 const obj = {};
 
 // WeakMap에 새 요소를 추가합니다
-wm.set(obj, 'foo').set(window, 'bar'); // 체인가능
+wm.set(obj, "foo").set(window, "bar"); // 체인가능
 
 // WeakMap 요소 업데이트
-wm.set(obj, 'baz');
+wm.set(obj, "baz");
 ```
 
 ## 명세서
