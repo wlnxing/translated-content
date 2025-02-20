@@ -7,7 +7,30 @@ slug: Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat
 
 **`Intl.DateTimeFormat`** 对象能使日期和时间在特定的语言环境下格式化。
 
-{{EmbedInteractiveExample("pages/js/intl-datetimeformat.html", "taller")}}
+{{InteractiveExample("JavaScript Demo: Intl.DateTimeFormat", "taller")}}
+
+```js interactive-example
+const date = new Date(Date.UTC(2020, 11, 20, 3, 23, 16, 738));
+// Results below assume UTC timezone - your results may vary
+
+// Specify default date formatting for language (locale)
+console.log(new Intl.DateTimeFormat("en-US").format(date));
+// Expected output: "12/20/2020"
+
+// Specify default date formatting for language with a fallback language (in this case Indonesian)
+console.log(new Intl.DateTimeFormat(["ban", "id"]).format(date));
+// Expected output: "20/12/2020"
+
+// Specify date and time format using "style" options (i.e. full, long, medium, short)
+console.log(
+  new Intl.DateTimeFormat("en-GB", {
+    dateStyle: "full",
+    timeStyle: "long",
+    timeZone: "Australia/Sydney",
+  }).format(date),
+);
+// Expected output: "Sunday, 20 December 2020 at 14:23:16 GMT+11"
+```
 
 ## 构造函数
 
@@ -56,29 +79,29 @@ const date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
 // 假定下面输出的结果使用了洛杉矶时区（UTC-0800，太平洋标准时间）
 
 // 美式英语 (US English) 使用  month-day-year 格式
-console.log(new Intl.DateTimeFormat('en-US').format(date));
+console.log(new Intl.DateTimeFormat("en-US").format(date));
 // "12/19/2012"
 
 // 英式英语 (British English) 使用 day-month-year 格式
-console.log(new Intl.DateTimeFormat('en-GB').format(date));
+console.log(new Intl.DateTimeFormat("en-GB").format(date));
 // "19/12/2012"
 
 // 韩国使用 year-month-day 格式
-console.log(new Intl.DateTimeFormat('ko-KR').format(date));
+console.log(new Intl.DateTimeFormat("ko-KR").format(date));
 // "2012. 12. 19."
 
 // 大部分阿拉伯国家使用阿拉伯字母 (real Arabic digits)
-console.log(new Intl.DateTimeFormat('ar-EG').format(date));
+console.log(new Intl.DateTimeFormat("ar-EG").format(date));
 // "١٩‏/١٢‏/٢٠١٢"
 
 // 在日本，应用可能想要使用日本日历，
 // 2012 年是平成 24 年（平成是是日本天皇明仁的年号，由 1989 年 1 月 8 日起开始计算直至现在）
-console.log(new Intl.DateTimeFormat('ja-JP-u-ca-japanese').format(date));
+console.log(new Intl.DateTimeFormat("ja-JP-u-ca-japanese").format(date));
 // "24/12/19"
 
 // 当请求可能不支持的语言，如巴厘语（ban）时，若同时指定了备用的语言，
 // 那么将使用备用的语言输出（本例为印尼语（id））
-console.log(new Intl.DateTimeFormat(['ban', 'id']).format(date));
+console.log(new Intl.DateTimeFormat(["ban", "id"]).format(date));
 // "19/12/2012"
 ```
 
@@ -90,54 +113,65 @@ console.log(new Intl.DateTimeFormat(['ban', 'id']).format(date));
 const date = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
 
 // 请求参数 (options) 中包含参数星期 (weekday)，并且该参数的值为长类型 (long)
-let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-console.log(new Intl.DateTimeFormat('de-DE', options).format(date));
+let options = {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
+console.log(new Intl.DateTimeFormat("de-DE", options).format(date));
 // "Donnerstag, 20. Dezember 2012"
 
 // 应用可能需要使用世界标准时间 (UTC)，并且 UTC 使用短名字 (short) 展示
-options.timeZone = 'UTC';
-options.timeZoneName = 'short';
-console.log(new Intl.DateTimeFormat('en-US', options).format(date));
+options.timeZone = "UTC";
+options.timeZoneName = "short";
+console.log(new Intl.DateTimeFormat("en-US", options).format(date));
 // "Thursday, December 20, 2012, GMT"
 
 // 有时需要更精确的选项
 options = {
-  hour: 'numeric', minute: 'numeric', second: 'numeric',
-  timeZone: 'Australia/Sydney',
-  timeZoneName: 'short'
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric",
+  timeZone: "Australia/Sydney",
+  timeZoneName: "short",
 };
-console.log(new Intl.DateTimeFormat('en-AU', options).format(date));
+console.log(new Intl.DateTimeFormat("en-AU", options).format(date));
 // "2:00:00 pm AEDT"
 
 // 再精确些...
 options.fractionalSecondDigits = 3; // 秒数的有效数字数量
-console.log(new Intl.DateTimeFormat('en-AU', options).format(date));
+console.log(new Intl.DateTimeFormat("en-AU", options).format(date));
 // "2:00:00.200 pm AEDT"
 
 // 即便是美国，有时也需要使用 24 小时制
 options = {
-  year: 'numeric', month: 'numeric', day: 'numeric',
-  hour: 'numeric', minute: 'numeric', second: 'numeric',
+  year: "numeric",
+  month: "numeric",
+  day: "numeric",
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric",
   hour12: false,
-  timeZone: 'America/Los_Angeles'
+  timeZone: "America/Los_Angeles",
 };
-console.log(new Intl.DateTimeFormat('en-US', options).format(date));
+console.log(new Intl.DateTimeFormat("en-US", options).format(date));
 // "12/19/2012, 19:00:00"
 
 // 要使用选项，但是需要使用浏览器的默认区域，请使用 'default'
-console.log(new Intl.DateTimeFormat('default', options).format(date));
+console.log(new Intl.DateTimeFormat("default", options).format(date));
 // "12/19/2012, 19:00:00"
 // 有时需要包含一天的时段
-options = {hour: "numeric", dayPeriod: "short"};
-console.log(new Intl.DateTimeFormat('en-US', options).format(date));
+options = { hour: "numeric", dayPeriod: "short" };
+console.log(new Intl.DateTimeFormat("en-US", options).format(date));
 // 10 at night
 ```
 
 使用的日历和数字格式也可以通过 `options` 参数分别设置：
 
 ```js
-const options = {calendar: 'chinese', numberingSystem: 'arab'};
-const dateFormat = new Intl.DateTimeFormat('default', options);
+const options = { calendar: "chinese", numberingSystem: "arab" };
+const dateFormat = new Intl.DateTimeFormat("default", options);
 const usedOptions = dateFormat.resolvedOptions();
 console.log(usedOptions.calendar);
 // "chinese"

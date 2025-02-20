@@ -2,13 +2,30 @@
 title: block
 slug: Web/JavaScript/Reference/Statements/block
 ---
+
 {{jsSidebar("Statements")}}
 
 **블록문**(또는 다른 언어에서는 복합문)은 0개 이상의 구문을 묶을 때 사용합니다.
 블록은 한 쌍의 중괄호로 구성하며 선택적으로 {{jsxref("Statements/label", "레이블",
   "", 1)}}을 붙일 수 있습니다.
 
-{{EmbedInteractiveExample("pages/js/statement-block.html", "taller")}}
+{{InteractiveExample("JavaScript Demo: Statement - Block", "taller")}}
+
+```js interactive-example
+var x = 1;
+let y = 1;
+
+if (true) {
+  var x = 2;
+  let y = 2;
+}
+
+console.log(x);
+// Expected output: 2
+
+console.log(y);
+// Expected output: 1
+```
 
 ## 문법
 
@@ -16,7 +33,7 @@ slug: Web/JavaScript/Reference/Statements/block
 
 ```js
 {
-  StatementList
+  StatementList;
 }
 ```
 
@@ -24,7 +41,7 @@ slug: Web/JavaScript/Reference/Statements/block
 
 ```js
 LabelIdentifier: {
-  StatementList
+  StatementList;
 }
 ```
 

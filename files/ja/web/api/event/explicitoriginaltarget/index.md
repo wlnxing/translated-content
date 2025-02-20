@@ -1,9 +1,12 @@
 ---
-title: Event.explicitOriginalTarget
+title: "Event: explicitOriginalTarget プロパティ"
+short-title: explicitOriginalTarget
 slug: Web/API/Event/explicitOriginalTarget
+l10n:
+  sourceCommit: c20c12fab32381b983b4148d712fda227d34e2bd
 ---
 
-{{APIRef("DOM")}}{{Non-standard_Header}}
+{{APIRef("DOM")}}{{Non-standard_Header}}{{AvailableInWorkers}}
 
 **`explicitOriginalTarget`** は {{domxref("Event")}} インターフェイスの読み取り専用プロパティで、このイベントの無名ではない元のターゲットを返します。
 
@@ -44,7 +47,3 @@ _これは Mozilla 固有のプロパティであり、現在のどの仕様に�
 ## ブラウザーの互換性
 
 {{Compat}}
-
-## 関連情報
-
-- [イベントターゲットの比較](/ja/docs/Web/API/Event/Comparison_of_Event_Targets)

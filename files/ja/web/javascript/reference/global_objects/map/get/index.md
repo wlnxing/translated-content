@@ -9,7 +9,18 @@ l10n:
 
 **`get()`** メソッドは、指定された要素を `Map` オブジェクトから返します。指定されたキーに関連付けられた値がオブジェクトである場合は、そのオブジェクトの参照を受け取ることになり、そのオブジェクトに対して変更を行った場合は、 `Map` オブジェクトの中にあるものに変更が行われます。
 
-{{EmbedInteractiveExample("pages/js/map-prototype-get.html")}}
+{{InteractiveExample("JavaScript Demo: Map.prototype.get()")}}
+
+```js interactive-example
+const map1 = new Map();
+map1.set("bar", "foo");
+
+console.log(map1.get("bar"));
+// Expected output: "foo"
+
+console.log(map1.get("baz"));
+// Expected output: undefined
+```
 
 ## 構文
 
@@ -32,10 +43,10 @@ get(key)
 
 ```js
 const myMap = new Map();
-myMap.set('bar', 'foo');
+myMap.set("bar", "foo");
 
-console.log(myMap.get('bar')); // "foo" を返す
-console.log(myMap.get('baz')); // undefined を返す
+console.log(myMap.get("bar")); // "foo" を返す
+console.log(myMap.get("baz")); // undefined を返す
 ```
 
 ### get() を使用して、オブジェクトの参照を取得
@@ -43,12 +54,12 @@ console.log(myMap.get('baz')); // undefined を返す
 ```js
 const arr = [];
 const myMap = new Map();
-myMap.set('bar', arr);
+myMap.set("bar", arr);
 
-myMap.get('bar').push('foo');
+myMap.get("bar").push("foo");
 
 console.log(arr); // ["foo"]
-console.log(myMap.get('bar')); // ["foo"]
+console.log(myMap.get("bar")); // ["foo"]
 ```
 
 マップが元のオブジェクトへの参照を保持することで、実質的にオブジェクトがガベージコレクトされないことを意味し、予期せぬメモリー問題を引き起こす可能性があることに注意してください。もし、マップに格納されるオブジェクトが元のオブジェクトと同じ寿命を持つようにしたい場合は、 {{jsxref("WeakMap")}} を使用することを検討してください。

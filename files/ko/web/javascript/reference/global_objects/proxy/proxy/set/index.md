@@ -7,14 +7,39 @@ slug: Web/JavaScript/Reference/Global_Objects/Proxy/Proxy/set
 
 **`handler.set()`** 메서드는 속성 값을 설정을 위한 트랩입니다.
 
-{{EmbedInteractiveExample("pages/js/proxyhandler-set.html", "taller")}}
+{{InteractiveExample("JavaScript Demo: handler.set()", "taller")}}
+
+```js interactive-example
+const monster1 = { eyeCount: 4 };
+
+const handler1 = {
+  set(obj, prop, value) {
+    if (prop === "eyeCount" && value % 2 !== 0) {
+      console.log("Monsters must have an even number of eyes");
+    } else {
+      return Reflect.set(...arguments);
+    }
+  },
+};
+
+const proxy1 = new Proxy(monster1, handler1);
+
+proxy1.eyeCount = 1;
+// Expected output: "Monsters must have an even number of eyes"
+
+console.log(proxy1.eyeCount);
+// Expected output: 4
+
+proxy1.eyeCount = 2;
+console.log(proxy1.eyeCount);
+// Expected output: 2
+```
 
 ## 구문
 
 ```js
 new Proxy(target, {
-  set(target, property, value, receiver) {
-  }
+  set(target, property, value, receiver) {},
 });
 ```
 
@@ -74,19 +99,22 @@ new Proxy(target, {
 다음 코드는 속성 값을 설정하는 것을 트랩합니다.
 
 ```js
-const p = new Proxy({}, {
-  set(target, prop, value, receiver) {
-    target[prop] = value;
-    console.log(`property set: ${prop} = ${value}`);
-    return true;
-  }
-})
+const p = new Proxy(
+  {},
+  {
+    set(target, prop, value, receiver) {
+      target[prop] = value;
+      console.log(`property set: ${prop} = ${value}`);
+      return true;
+    },
+  },
+);
 
-console.log('a' in p);  // false
+console.log("a" in p); // false
 
-p.a = 10;               // "property set: a = 10"
-console.log('a' in p);  // true
-console.log(p.a);       // 10
+p.a = 10; // "property set: a = 10"
+console.log("a" in p); // true
+console.log(p.a); // 10
 ```
 
 ## 명세서

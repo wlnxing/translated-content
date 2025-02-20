@@ -7,7 +7,22 @@ slug: Web/JavaScript/Reference/Global_Objects/Intl/Collator
 
 O objeto **`Intl.Collator`** permite uma comparação de strings sensível à linguagem.
 
-{{EmbedInteractiveExample("pages/js/intl-collator.html")}}
+{{InteractiveExample("JavaScript Demo: Intl.Collator")}}
+
+```js interactive-example
+console.log(["Z", "a", "z", "ä"].sort(new Intl.Collator("de").compare));
+// Expected output: Array ["a", "ä", "z", "Z"]
+
+console.log(["Z", "a", "z", "ä"].sort(new Intl.Collator("sv").compare));
+// Expected output: Array ["a", "z", "Z", "ä"]
+
+console.log(
+  ["Z", "a", "z", "ä"].sort(
+    new Intl.Collator("de", { caseFirst: "upper" }).compare,
+  ),
+);
+// Expected output: Array ["a", "ä", "Z", "z"]
+```
 
 <!-- The source for this interactive example is stored in a GitHub repository. If you'd like to contribute to the interactive examples project, please clone https://github.com/mdn/interactive-examples and send us a pull request. -->
 
@@ -44,7 +59,7 @@ console.log(new Intl.Collator().compare("a", "a")); // 0
 
 ### Usando localizações
 
-Os resultados retornados por [`Intl.Collator.prototype.compare()`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/compare) variam entre linguagens. Para obter a sequência de ordenação da linguagem usada na interface da sua aplicação, garanta a especificação desta linguagem (e possivelmente algumas linguagens reserva) usando o argumento `locales`:
+Os resultados retornados por [`Intl.Collator.prototype.compare()`](/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/compare) variam entre linguagens. Para obter a sequência de ordenação da linguagem usada na interface da sua aplicação, garanta a especificação desta linguagem (e possivelmente algumas linguagens reserva) usando o argumento `locales`:
 
 ```js
 // Em alemão, ä está no mesmo nível de a
@@ -58,7 +73,7 @@ console.log(new Intl.Collator("sv").compare("ä", "z"));
 
 ### Usando opções
 
-Os resultados retornados por [`Intl.Collator.prototype.compare()`](/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/compare) podem ser customizados usando o argumento `options`:
+Os resultados retornados por [`Intl.Collator.prototype.compare()`](/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/compare) podem ser customizados usando o argumento `options`:
 
 ```js
 // Em Alemão, ä tem a como sua letra base

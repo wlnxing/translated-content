@@ -7,12 +7,26 @@ slug: Web/JavaScript/Reference/Global_Objects/WeakMap/get
 
 **`get()`** 메서드는 `WeakMap` 객체에서 특정 요소를 반환합니다.
 
-{{EmbedInteractiveExample("pages/js/weakmap-prototype-get.html")}}
+{{InteractiveExample("JavaScript Demo: WeakMap.prototype.get()")}}
+
+```js interactive-example
+const weakmap1 = new WeakMap();
+const object1 = {};
+const object2 = {};
+
+weakmap1.set(object1, 42);
+
+console.log(weakmap1.get(object1));
+// Expected output: 42
+
+console.log(weakmap1.get(object2));
+// Expected output: undefined
+```
 
 ## 구문
 
 ```js
-get(key)
+get(key);
 ```
 
 ### 매개변수
@@ -30,10 +44,10 @@ get(key)
 
 ```js
 const wm = new WeakMap();
-wm.set(window, 'foo');
+wm.set(window, "foo");
 
 wm.get(window); // "foo" 반환.
-wm.get('baz');  // undefined 반환.
+wm.get("baz"); // undefined 반환.
 ```
 
 ## 명세서

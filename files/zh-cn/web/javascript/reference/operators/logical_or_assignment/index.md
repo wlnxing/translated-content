@@ -7,7 +7,19 @@ slug: Web/JavaScript/Reference/Operators/Logical_OR_assignment
 
 逻辑或赋值（`x ||= y`）运算仅在 `x` 为{{Glossary("falsy", "假")}}值时为其赋值。
 
-{{EmbedInteractiveExample("pages/js/expressions-logical-or-assignment.html")}}
+{{InteractiveExample("JavaScript Demo: Expressions - Logical OR assignment")}}
+
+```js interactive-example
+const a = { duration: 50, title: "" };
+
+a.duration ||= 10;
+console.log(a.duration);
+// Expected output: 50
+
+a.title ||= "title is empty.";
+console.log(a.title);
+// Expected output: "title is empty."
+```
 
 ## 语法
 
@@ -17,7 +29,7 @@ expr1 ||= expr2
 
 ## 描述
 
-逻辑或的[*短路运算*](/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#短路运算)意味着 `x ||= y` 与下式等价：
+逻辑或的[_短路运算_](/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_precedence#短路运算)意味着 `x ||= y` 与下式等价：
 
 ```js
 x || (x = y);

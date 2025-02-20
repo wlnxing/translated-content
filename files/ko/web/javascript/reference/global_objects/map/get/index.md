@@ -1,6 +1,8 @@
 ---
 title: Map.prototype.get()
 slug: Web/JavaScript/Reference/Global_Objects/Map/get
+l10n:
+  sourceCommit: 6a0f9553932823cd0c4dcf695d4b4813474964fb
 ---
 
 {{JSRef}}
@@ -8,7 +10,18 @@ slug: Web/JavaScript/Reference/Global_Objects/Map/get
 **`get()`** 메서드는 `Map` 객체에서 특정 요소를 반환합니다. 만약 주어진 키와 관련된 값이 객체라면 해당 객체에 대한
 참조만 가져오고, 해당 객체에 대한 모든 변경은 `Map` 내에서 효율적으로 수정됩니다.
 
-{{EmbedInteractiveExample("pages/js/map-prototype-get.html")}}
+{{InteractiveExample("JavaScript Demo: Map.prototype.get()")}}
+
+```js interactive-example
+const map1 = new Map();
+map1.set("bar", "foo");
+
+console.log(map1.get("bar"));
+// Expected output: "foo"
+
+console.log(map1.get("baz"));
+// Expected output: undefined
+```
 
 ## 구문
 
@@ -31,10 +44,10 @@ get(key)
 
 ```js
 const myMap = new Map();
-myMap.set('bar', 'foo');
+myMap.set("bar", "foo");
 
-console.log(myMap.get('bar')); // Returns "foo"
-console.log(myMap.get('baz')); // Returns undefined
+console.log(myMap.get("bar")); // "foo" 를 반환합니다.
+console.log(myMap.get("baz")); // undefined 을 반환합니다.
 ```
 
 ### get()을 사용하여 객체에 대한 참조 검색
@@ -42,13 +55,12 @@ console.log(myMap.get('baz')); // Returns undefined
 ```js
 const arr = [];
 const myMap = new Map();
+myMap.set("bar", arr);
 
-myMap.set('bar', arr);
-
-myMap.get('bar').push('foo');
+myMap.get("bar").push("foo");
 
 console.log(arr); // ["foo"]
-console.log(myMap.get('bar')); // ["foo"]
+console.log(myMap.get("bar")); // ["foo"]
 ```
 
 맵이 원본 객체에 대한 참조만 보유하고 있다는 것은 해당 객체가 가비지 콜렉션되지 않을 수 있으며 이로 인해 예측하지 못한

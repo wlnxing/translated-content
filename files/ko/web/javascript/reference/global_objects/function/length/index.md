@@ -7,7 +7,19 @@ slug: Web/JavaScript/Reference/Global_Objects/Function/length
 
 {{jsxref("Function", "함수")}} 인스턴스의 **`length`** 데이터 속성은 함수가 기대하는 인자의 수를 나타냅니다.
 
-{{EmbedInteractiveExample("pages/js/function-length.html")}}
+{{InteractiveExample("JavaScript Demo: Function.length")}}
+
+```js interactive-example
+function func1() {}
+
+function func2(a, b) {}
+
+console.log(func1.length);
+// Expected output: 0
+
+console.log(func2.length);
+// Expected output: 2
+```
 
 ## 값
 
@@ -52,7 +64,7 @@ console.log(((a, b = 1, c) => {}).length);
 // 1, 기본값을 가진 매개변수 이전의 매개변수만 셉니다
 ```
 
-## 명세
+## 명세서
 
 {{Specifications}}
 

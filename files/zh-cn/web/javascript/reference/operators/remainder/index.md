@@ -7,7 +7,21 @@ slug: Web/JavaScript/Reference/Operators/Remainder
 
 **取余**（**`%`**）运算符返回左侧操作数除以右侧操作数的余数。它总是与被除数的符号保持一致。
 
-{{EmbedInteractiveExample("pages/js/expressions-remainder.html")}}
+{{InteractiveExample("JavaScript Demo: Expressions - Remainder operator")}}
+
+```js interactive-example
+console.log(13 % 5);
+// Expected output: 3
+
+console.log(-13 % 5);
+// Expected output: -3
+
+console.log(4 % 2);
+// Expected output: 0
+
+console.log(-4 % 2);
+// Expected output: -0
+```
 
 ## 语法
 
@@ -28,35 +42,35 @@ x % y
 ### 被除数为正数
 
 ```js
-13 % 5  // 3
-1 % -2 // 1
-1 % 2  // 1
-2 % 3  // 2
-5.5 % 2 // 1.5
+13 % 5; // 3
+1 % -2; // 1
+1 % 2; // 1
+2 % 3; // 2
+5.5 % 2; // 1.5
 ```
 
 ### 被除数为负数
 
 ```js
--13 % 5 // -3
--1 % 2  // -1
--4 % 2  // -0
+-13 % 5; // -3
+-1 % 2; // -1
+-4 % 2; // -0
 ```
 
 ### 被除数为 NaN
 
 ```js
-NaN % 2 // NaN
+NaN % 2; // NaN
 ```
 
 ### 被除数为 Infinity
 
 ```js
-Infinity % 2 // NaN
-Infinity % 0 // NaN
-Infinity % Infinity // NaN
-2 % Infinity // 2
-0 % Infinity // 0
+Infinity % 2; // NaN
+Infinity % 0; // NaN
+Infinity % Infinity; // NaN
+2 % Infinity; // 2
+0 % Infinity; // 0
 ```
 
 ## 规范

@@ -7,9 +7,22 @@ l10n:
 
 {{JSRef}}
 
-**`Promise.all()`** は静的メソッドで、入力としてプロミスの集合の反復可能オブジェクトを取り、単一の {{jsxref("Promise")}} を返します。この返却されたプロミスは、入力されたプロミスがすべて履行されたとき（空の反復子が渡されたときを含む）、その履行された値の配列で、履行されます。入力されたプロミスのいずれかが拒否されると、その最初の拒否理由とともに拒否されます。
+**`Promise.all()`** は静的メソッドで、入力としてプロミスの集合の反復可能オブジェクトを取り、単一の {{jsxref("Promise")}} を返します。この返却されたプロミスは、入力されたプロミスがすべて履行されたとき（空のイテレーターが渡されたときを含む）、その履行された値の配列で、履行されます。入力されたプロミスのいずれかが拒否されると、その最初の拒否理由とともに拒否されます。
 
-{{EmbedInteractiveExample("pages/js/promise-all.html")}}
+{{InteractiveExample("JavaScript Demo: Promise.all()")}}
+
+```js interactive-example
+const promise1 = Promise.resolve(3);
+const promise2 = 42;
+const promise3 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 100, "foo");
+});
+
+Promise.all([promise1, promise2, promise3]).then((values) => {
+  console.log(values);
+});
+// Expected output: Array [3, 42, "foo"]
+```
 
 ## 構文
 
@@ -20,7 +33,7 @@ Promise.all(iterable)
 ### 引数
 
 - `iterable`
-  - : [反復可能](/ja/docs/Web/JavaScript/Reference/Iteration_protocols#反復可能_iterable_プロトコル)オブジェクト（プロミスの配列 ({{jsxref("Array")}}) など）。
+  - : [反復可能](/ja/docs/Web/JavaScript/Reference/Iteration_protocols#反復可能プロトコル)オブジェクト（プロミスの配列 ({{jsxref("Array")}}) など）。
 
 ### 返値
 
@@ -32,7 +45,10 @@ Promise.all(iterable)
 
 ## 解説
 
-`Promise.all()` メソッドは、[プロミスの並列処理](/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#プロミスの並列処理)メソッドのうちの一つです。このメソッドは、複数のプロミスの結果を集約するのに便利です。このメソッドは、コード全体が正常に動作するために依存している複数の関連する非同期タスクがあり、コードの実行を続ける前にそれらすべてを履行させたい場合によく使われます。
+`Promise.all()` メソッドは、[プロミスの並行処理](/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#プロミスの並行処理)メソッドのうちの一つです。このメソッドは、複数のプロミスの結果を集約するのに便利です。このメソッドは、コード全体が正常に動作するために依存している複数の関連する非同期タスクがあり、コードの実行を続ける前にそれらすべてを履行させたい場合によく使われます。
+
+> [!NOTE]
+> 日本語の技術文書では、このメソッドが複数のプロミスを並列に処理すると説明されることがありますが、実際には複数のスレッドでプロミスが処理されるわけではないことに注意してください。詳細は[プロミスの並行処理](/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#プロミスの並行処理)を参照してください。
 
 `Promise.all()` は、入力されたプロミスの**いずれか**が拒否されると直ちに拒否されます。それに対して、{{jsxref("Promise.allSettled()")}} が返すプロミスは、入力されたプロミスのいずれかが拒否されたかどうかに関わらず、すべての入力されたプロミスが完了するのを待ちます。入力された反復可能オブジェクトに含まれるプロミスのすべての最終結果が必要な場合は、`allSettled()` を使用してください。
 
@@ -204,7 +220,7 @@ async function getPrice() {
 }
 ```
 
-`Promise.all` はエラー処理が直感的であるため、ここでの[並列処理メソッド](/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#並列処理メソッド)には最適な選択です。もしいずれかのプロミスが拒否されたら、結果がもう利用できなくなり、 await 式全体が例外を発生します。
+`Promise.all` はエラー処理が直感的であるため、ここでの[並行処理メソッド](/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise#プロミスの並行処理)には最適な選択です。もしいずれかのプロミスが拒否されたら、結果がもう利用できなくなり、 await 式全体が例外を発生します。
 
 `Promise.all` はプロミスの反復可能オブジェクトを受け入れるので、いくつかの非同期関数の実行を並列化するために使用するには、非同期関数を呼び出して返されたプロミスを使用する必要があります。関数はプロミスではないので、 `Promise.all` に直接渡しても動作しません。
 
@@ -268,7 +284,7 @@ Promise.all([p1.catch((error) => error), p2.catch((error) => error)]).then(
   (values) => {
     console.log(values[0]); // "p1_delayed_resolution"
     console.error(values[1]); // "Error: p2_immediate_rejection"
-  }
+  },
 );
 ```
 

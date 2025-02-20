@@ -3,8 +3,6 @@ title: 如何撰写和引用一个术语表中的条目
 slug: MDN/Writing_guidelines/Howto/Write_a_new_entry_in_the_glossary
 ---
 
-{{MDNSidebar}}
-
 本文介绍了如何撰写或引用 [MDN Web 文档术语表](/zh-CN/docs/Glossary)中的条目，还提供了有关术语条目的布局和内容的指南。术语表提供了你在阅读有关 Web 和 Web 开发的 MDN 内容时会遇到的所有术语、行话和缩写的定义。
 
 术语表并不一定完整，因为 Web 总是在发生变化。你可以通过贡献新的条目或修复问题，帮助我们更新术语表和填补缺失的内容。
@@ -21,7 +19,8 @@ slug: MDN/Writing_guidelines/Howto/Write_a_new_entry_in_the_glossary
 
 任何术语表页面的第一段是对该术语的简单和简短描述（最好不超过两个句子）。确保阅读说明的人能够立即了解定义的术语。
 
-> **备注：** 请不要直接从其他地方复制和粘贴定义（尤其是维基百科，因为许可证版本范围较小，与 MDN 不兼容）。你的术语条目应该是自己撰写的内容。
+> [!NOTE]
+> 请不要直接从其他地方复制和粘贴定义（尤其是维基百科，因为许可证版本范围较小，与 MDN 不兼容）。你的术语条目应该是自己撰写的内容。
 
 #### 撰写一个良好的术语条目
 
@@ -53,7 +52,7 @@ slug: MDN/Writing_guidelines/Howto/Write_a_new_entry_in_the_glossary
 - 该术语的主页面必须是一个包含了 [`GlossaryDisambiguation`](https://github.com/mdn/yari/blob/main/kumascript/macros/GlossaryDisambiguation.ejs) 宏的消歧页面；
 - 该术语具有定义给定上下文的术语的子页面。
 
-我们以一个例子来说明。*签名*（signature）条目在至少两种不同的语境中具有不同的含义：*安全*和*函数*。
+我们以一个例子来说明。_签名_（signature）条目在至少两种不同的语境中具有不同的含义：*安全*和*函数*。
 
 1. [Glossary/Signature](/zh-CN/docs/Glossary/Signature) 页面是使用了 [`GlossaryDisambiguation`](https://github.com/mdn/yari/blob/main/kumascript/macros/GlossaryDisambiguation.ejs) 宏的消歧页面。
 2. [Glossary/Signature/Security](/zh-CN/docs/Glossary/Signature/Security) 页面是定义安全上下文中签名的条目页面。

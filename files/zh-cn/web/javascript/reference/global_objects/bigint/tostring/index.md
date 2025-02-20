@@ -7,7 +7,18 @@ slug: Web/JavaScript/Reference/Global_Objects/BigInt/toString
 
 **`toString()`** 方法返回一个字符串，表示指定 {{jsxref("BigInt")}} 对象。后面的 "n" 不是字符串的一部分。
 
-{{EmbedInteractiveExample("pages/js/bigint-tostring.html")}}
+{{InteractiveExample("JavaScript Demo: BigInt.toString()")}}
+
+```js interactive-example
+console.log(1024n.toString());
+// Expected output: "1024"
+
+console.log(1024n.toString(2));
+// Expected output: "10000000000"
+
+console.log(1024n.toString(16));
+// Expected output: "400"
+```
 
 ## 语法
 
@@ -44,11 +55,11 @@ bigIntObj.toString([radix])
 ### Using `toString`
 
 ```js
-17n.toString();      // '17'
-66n.toString(2);     // '1000010'
-254n.toString(16);   // 'fe'
--10n.toString(2);    // -1010'
--0xffn.toString(2);  // '-11111111'
+17n.toString(); // '17'
+66n.toString(2); // '1000010'
+254n.toString(16); // 'fe'
+-10n.toString(2); // -1010'
+-0xffn.toString(2); // '-11111111'
 ```
 
 ### Negative-zero `BigInt`
@@ -56,7 +67,7 @@ bigIntObj.toString([radix])
 没有负零 `BigInt`，因为整数中没有负零。`-0.0` 是一个 IEEE 浮点概念，只出现在 JavaScript {{jsxref("Number")}} 类型中。
 
 ```js
-(-0n).toString();      // '0'
+(-0n).toString(); // '0'
 BigInt(-0).toString(); // '0'
 ```
 

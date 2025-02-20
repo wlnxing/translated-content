@@ -7,7 +7,21 @@ slug: Web/JavaScript/Reference/Operators/Division
 
 **除法**（**`/`**）运算符计算两个操作数的商，其中左操作数是被除数，右操作数是除数。
 
-{{EmbedInteractiveExample("pages/js/expressions-division.html")}}
+{{InteractiveExample("JavaScript Demo: Expressions - Division operator")}}
+
+```js interactive-example
+console.log(12 / 2);
+// Expected output: 6
+
+console.log(3 / 2);
+// Expected output: 1.5
+
+console.log(6 / "3");
+// Expected output: 2
+
+console.log(2 / 0);
+// Expected output: Infinity
+```
 
 ## 语法
 
@@ -20,21 +34,21 @@ x / y
 ### 基本除法
 
 ```js
-1 / 2              // 0.5
+1 / 2; // 0.5
 
-Math.floor(3 / 2) // 1
+Math.floor(3 / 2); // 1
 
-1.0 / 2.0         // 0.5
+1.0 / 2.0; // 0.5
 ```
 
 ### 除以零
 
 ```js
-2.0 / 0     // Infinity
+2.0 / 0; // Infinity
 
-2.0 / 0.0   // Infinity, because 0.0 === 0
+2.0 / 0.0; // Infinity, because 0.0 === 0
 
-2.0 / -0.0  // -Infinity
+2.0 / -0.0; // -Infinity
 ```
 
 ## 规范
